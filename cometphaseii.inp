@@ -1,0 +1,212 @@
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+TITLE
+calculation of radiation for magents on COMET phase-II experiment
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+BEAM             8.0      -0.1               -0.08     -0.08          PROTON
+BEAMPOS    1.5628336       0.08.86326978                              NEGATIVE
+*
+GEOBEGIN                                                              COMBNAME
+    0    0                  A simple graphite target geometry to check yield
+BOX bBLH       -1000. -1000.0 -1000. 0.0 0.0 2000. 2000. 0.0 0.0 0.0 2000.0 0.0
+* Capture magnet section
+BOX bCAPS      -900. -900. -900. 0.0 0.0 1800. 1800. 0.0 0.0 0.0 1800. 0.0
+* Target
+RCC bTGT       1.38918542134 0. 7.8784620241 -2.77837084267 0.0 -15.7569240482
+              0.1
+* CS0 outer cylinder
+RCC bCS0o      0.0 0.0 -85.788 0.0 0.0 -18.024 82.365
+* CS1 outer cylinder
+RCC bCS1o      0.0 0.0 59.525 0.0 0.0 -139.05 82.365
+* CS Inner cylinder
+ZCC bCSIN      0.0 0.0 67.2
+* MS1 outer cylinder
+RCC bMS1o      0.0 0.0 212.1375 0.0 0.0 -146.775 75.625
+* MS2 outer cylinder
+RCC bMS2o      0.0 0.0 291.05 0.0 0.0 -72.1 78.995
+* inner thermal shield 1
+RCC bTSLDi1    0.0 0.0 -124.6 0.0 0.0 429.4 63.
+* inner thermal shield 2
+RCC bTSLDi2    0.0 0.0 -124.6 0.0 0.0 429.4 63.5
+* TS1a outer cylinder
+RCC bTS1ao     0.0 0.0 293. 0.0 0.0 -20. 26.6
+* TS1a inner cylinder
+RCC bTS1ai     0.0 0.0 293. 0.0 0.0 -20. 25.
+* TS1b outer cylinder
+RCC bTS1bo     0.0 0.0 320. 0.0 0.0 -24. 29.8
+* TS1b inner cylinder
+RCC bTS1bi     0.0 0.0 320. 0.0 0.0 -24. 25.
+* TS1c outer cylinder
+RCC bTS1co     0.0 0.0 345. 0.0 0.0 -20. 31.4
+* TS1c inner cylinder
+RCC bTS1ci     0.0 0.0 345. 0.0 0.0 -20. 25.
+* TS1d outer cylinder
+RCC bTS1do     0.0 0.0 380. 0.0 0.0 -32. 31.4
+* TS1d inner cylinder
+RCC bTS1di     0.0 0.0 380. 0.0 0.0 -32. 25.
+* TS1e outer cylinder
+RCC bTS1eo     0.0 0.0 405. 0.0 0.0 -20. 29.8
+* TS1e inner cylinder
+RCC bTS1ei     0.0 0.0 405. 0.0 0.0 -20. 25.
+* TS1f outer cylinder
+RCC bTS1fo     0.0 0.0 435. 0.0 0.0 -35. 50.6
+* TS1f inner cylinder
+RCC bTS1fi     0.0 0.0 435. 0.0 0.0 -35. 41.
+* Radiation shield outer cylinder
+RCC bHRSo      0.0 0.0 75. 0.0 0.0 -180. 59.
+TRC bHRSi1     0.0 0.0 75. 0.0 0.0 -75. 36. 15.
+TRC bHRSi2     0.0 0.0 -105. 0.0 0.0 80. 31. 15.
+RCC bHRSi3     0.0 0.0 -25.0 0.0 0.0 25.0 15.
+* Copper Radiation Shield outer cylinder
+RCC bCRSo      0.0 0.0 255. 0.0 0.0 -180. 59.
+* Copper Radiation Shield inner cylinder
+RCC bCRSi1     0.0 0.0 235. 0.0 0.0 -160. 44.
+* Copper Radiation Shield inner cylinder
+RCC bCRSi2     0.0 0.0 255. 0.0 0.0 -20. 18.
+* Al Support
+RCC bSPT1      0.0 0.0 65.3625 0.0 0.0 -178.3625 84.9
+* Support structure outer cylinder
+RCC bSPT2      0.0 0.0 65.3625 0.0 0.0 146.775 79.1
+* support structure cylinder for MS2
+RCC bSPT3      0.0 0.0 212.1375 0.0 0.0 88. 87.1
+* yoke inner cylinder
+RCC bYOKEi1    0.0 0.0 -185.5 0.0 0.0 40. 70.
+RCC bYOKEi2    0.0 0.0 -145.5 0.0 0.0 560. 114.5
+RCC bYOKEi3    0.0 0.0 414.5 0.0 0.0 40.0 65.8
+BOX bYOKEo     -174.5 -174.5 -185.5 0.0 0.0 640.0 0.0 349. 0.0 349. 0.0 0.0
+* Beam duct outer cylinder
+RCC bDUCTo     0.0 0.0 255.0 0.0 0.0 162.5 19.5
+* Beam duct inner cylinder
+RCC bDUCTi     0.0 0.0 255.0 0.0 0.0 162.5 18.0
+END
+* black hole
+BLACKH       5 +bBLH -bCAPS
+* Capture section
+CAPSEC       5 +bCAPS -bCSIN -bSPT1 -bSPT2 -bSPT3 -(+bYOKEo -bYOKEi1 -bYOKEi2 -bYOKEi3)
+* CS0 coil
+CS0          5 +bCS0o -bCSIN
+* Target
+TARGET       5 +bTGT
+* CS1 coil
+CS1          5 +bCS1o -bCSIN
+* Inner magnet
+INMAG        5 +bCAPS +bCSIN -bHRSo -bCRSo -(+bTSLDi2 -bTSLDi1) -(+bTS1ao -bTS1ai) -(+bTS1bo -bTS1bi) -(+bTS1co
+               -bTS1ci) -(+bTS1do -bTS1di) -(+bTS1eo -bTS1ei) -(+bTS1fo -bTS1fi) -(+bYOKEo -bYOKEi1 -bYOKEi2
+               -bYOKEi3 +bCSIN) -(+bDUCTo -bDUCTi )
+               | +bHRSi1 -bTGT
+               | +bHRSi2
+               | +bHRSi3 -bTGT
+               | +bCRSi1
+               | +bCRSi2
+MS1          5 +bMS1o -bCSIN
+MS2          5 +bMS2o -bCSIN
+* Thermal shield for CS 1
+CSTSLD1      5 +bTSLDi2 -bTSLDi1
+TS1a         5 +bTS1ao -bTS1ai
+TS1b         5 +bTS1bo-bTS1bi
+TS1c         5 +bTS1co -bTS1ci
+TS1d         5 +bTS1do -bTS1di
+TS1e         5 +bTS1eo -bTS1ei
+TS1f         5 +bTS1fo -bTS1fi
+* Hybird Tungsten Radiation Shield
+HTRS         5 +bHRSo -bHRSi1 -bHRSi2 -bHRSi3
+* Copper Radiation Shield
+CRS          5 +bCRSo -bCRSi1 -bCRSi2
+* Support for CS0 and CS1
+CSSPT        5 +bSPT1 -bCSIN -bCS0o -bCS1o
+* Support structure for MS
+MSSPT        5 +bSPT2 -bCSIN -bMS1o
+               | +bSPT3 -bCSIN -bMS2o
+YOKE         5 +bYOKEo -bYOKEi1 -bYOKEi2 -bYOKEi3 -bCSIN
+               | +bYOKEo -bYOKEi1 -bYOKEi2 -bYOKEi3 +bCSIN
+* Beam duct at capture solenoid
+DUCT         5 +bDUCTo -bDUCTi
+END
+GEOEND
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+MATERIAL                            4.00       26.                    COIL
+MATERIAL                           18.00       27.                    WALLOY
+MATERIAL                            7.93       28.                    SUS304
+MATERIAL         41.  92.90638      8.57       29.                    NIOBIUM
+MATERIAL         25. 54.938045      7.21       30.                    MANGANES
+MATERIAL         24.   51.9961      7.19       31.                    CHROMIUM
+COMPOUND      -0.567  ALUMINUM    -0.067  TITANIUM    -0.233    COPPERCOIL
+COMPOUND      -0.133   NIOBIUM                                        COIL
+COMPOUND       -0.95  TUNGSTEN     -0.02    COPPER     -0.03    NICKELWALLOY
+COMPOUND       -0.01   SILICON     -0.02  MANGANES     -0.13    NICKELSUS304
+COMPOUND        -0.2  CHROMIUM     -0.64      IRON                    SUS304
+LOW-MAT     ALUMINUM       13.       27.       87.                    ALUMINUM
+LOW-MAT         IRON       26.       -2.      296.                    IRON
+LOW-MAT       COPPER
+LOW-MAT      SILICON
+LOW-MAT     TUNGSTEN
+LOW-MAT     TITANIUM
+LOW-MAT       NICKEL
+LOW-MAT      NIOBIUM
+LOW-MAT     MANGANES
+LOW-MAT     CHROMIUM
+*  External Black Hole
+ASSIGNMA    BLCKHOLE    BLACKH
+ASSIGNMA      VACUUM    CAPSEC
+ASSIGNMA        COIL       CS0
+ASSIGNMA    TUNGSTEN    TARGET
+ASSIGNMA        COIL       CS1
+ASSIGNMA      VACUUM     INMAG                            1.
+ASSIGNMA        COIL       MS1
+ASSIGNMA        COIL       MS2
+ASSIGNMA    ALUMINUM   CSTSLD1
+ASSIGNMA        COIL      TS1a
+ASSIGNMA        COIL      TS1b
+ASSIGNMA        COIL      TS1c
+ASSIGNMA        COIL      TS1d
+ASSIGNMA        COIL      TS1e
+ASSIGNMA        COIL      TS1f
+ASSIGNMA      WALLOY      HTRS
+ASSIGNMA      COPPER       CRS
+ASSIGNMA    ALUMINUM     CSSPT
+ASSIGNMA    ALUMINUM     MSSPT
+ASSIGNMA        IRON      YOKE
+ASSIGNMA      SUS304      DUCT
+MGNFIELD                                        0.        0.        0.
+* e+e- and gamma production threshold set at 10 MeV
+EMFCUT       -0.0001    0.0001    0.0001                              PROD-CUT
+* Switch on the muonuclear reaction
+PHOTONUC       1111.                          LEAD                    MUMUPAIR
+* Switch on the photonuclear reaction
+*PHOTONUC       1111.                          COIL                    ELECTNUC
+THRESHOL                          0.0001    0.0001
+PART-THR      -1E-05    PROTON                           0.0
+PART-THR      -1E-05     PION-                           0.0
+PART-THR      -1E-05     PION+                           0.0
+PART-THR      -1E-05     MUON+                           0.0
+PART-THR      -1E-05  DEUTERON                           0.0
+PART-THR      -1E-05     MUON-                           0.0
+PHYSICS           1.                                                  COALESCE
+PHYSICS           3.                                                  EVAPORAT
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+USRBIN           11.    ENERGY      -21.    82.365             -85.788eCS0
+USRBIN          67.2            -103.812       18.       16.       35. &
+USRBIN           11.    ENERGY      -21.    82.365              59.525eCS1
+USRBIN          67.2             -79.525       18.       16.      270. &
+USRBIN           11.    ENERGY      -21.    75.625            212.1375eMS1
+USRBIN          67.2              75.625       10.       16.      285. &
+USRBIN           11.    ENERGY      -21.    78.995              291.05eMS2
+USRBIN          67.2              218.95       18.       16.      140. &
+USRBIN           11.    ENERGY      -21.      26.6                293.eTS1a
+USRBIN          25.0                273.        2.        8.       40. &
+USRBIN           11.    ENERGY      -21.      29.8                320.eTS1b
+USRBIN          25.0                296.        6.        8.       48. &
+USRBIN           11.    ENERGY      -21.      31.4                345.eTS1c
+USRBIN          25.0                325.        8.        8.       40. &
+USRBIN           11.    ENERGY      -21.      31.4                380.eTS1d
+USRBIN          25.0                348.        8.        8.       64. &
+USRBIN           11.    ENERGY      -21.      29.8                405.eTS1e
+USRBIN          25.0                385.        6.        8.       40. &
+USRBIN           11.    ENERGY      -21.      50.6                435.eTS1f
+USRBIN          41.0                400.       12.        8.       70. &
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+USRBIN           10.     PION-      -22.      200.       60.      500.PION
+USRBIN         -200.      -60.     -200.      200.       50.      200. &
+RANDOMIZ         1.0
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8
+START         1000.0
+STOP
